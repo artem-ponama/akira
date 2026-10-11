@@ -73,7 +73,7 @@ static void RegistEventCallback(ChiakiRegistEvent* event, void* user)
 }
 
 Host::Host(const std::string& name)
-    : hostName(name)
+    : hostName(name), consoleModel(ConsoleModel::PS5Fat)
 {
     settings = SettingsManager::getInstance();
     log = settings->getLogger();
