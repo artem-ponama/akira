@@ -42,10 +42,18 @@ AddHostTab::AddHostTab() {
         [](int selected) {}
     );
 
-    saveBtn->registerClickAction([this](brls::View* view) {
-        onSaveClicked();
-        return true;
-    });
+    auto* saveBtn = this->getView("add/saveBtn");
+    if (saveBtn) {
+        auto* label = dynamic_cast<brls::Label*>(saveBtn->getView("add/saveBtnLabel"));
+        if (label) {
+            label->setText("akira/add_host/add_console"_i18n);
+            label->setHorizontalAlign(brls::HorizontalAlign::CENTER);
+        }
+        saveBtn->registerClickAction([this](brls::View* view) {
+            onSaveClicked();
+            return true;
+        });
+    };
 }
 
 brls::View* AddHostTab::create() {
